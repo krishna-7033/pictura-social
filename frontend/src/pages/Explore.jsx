@@ -23,7 +23,7 @@ const Explore = () => {
             className={`w-full ${height} rounded-2xl overflow-hidden relative group cursor-pointer`}
           >
             <img 
-              src={`https://source.unsplash.com/random/800x800?aesthetic,vibe&sig=${i}`} 
+              src={`https://source.unsplash.com/random/800x800?aesthetic,photography&sig=${i}`} 
               alt="Explore" 
               className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             />

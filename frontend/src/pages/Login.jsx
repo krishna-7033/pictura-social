@@ -51,7 +51,7 @@ const Login = () => {
             className="text-4xl font-bold italic mb-8 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500"
             style={{ fontFamily: "'Grand Hotel', cursive" }}
           >
-            Vibe
+            Pictura
           </h1>
 
           <form className="w-full flex flex-col gap-3" onSubmit={handleSubmit}>

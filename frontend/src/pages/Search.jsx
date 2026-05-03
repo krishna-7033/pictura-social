@@ -18,13 +18,13 @@ const Search = () => {
         <input
           type="text"
           className="w-full bg-white/10 backdrop-blur-md border border-white/20 text-white placeholder-white/60 rounded-2xl py-3 pl-10 pr-4 focus:outline-none focus:ring-2 focus:ring-purple-400 shadow-sm transition-all"
-          placeholder="Search creators, tags, and vibes..."
+          placeholder="Search creators, tags, and photos..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
       <h2 className="text-xl font-bold mb-4 text-white drop-shadow-md">
-        Trending Vibes
+        Trending Topics
       </h2>
       <div className="grid grid-cols-2 gap-4">
         {[

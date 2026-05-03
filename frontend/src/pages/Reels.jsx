@@ -23,10 +23,10 @@ const Reels = () => {
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-3">
               <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=creator" alt="Creator" className="w-10 h-10 rounded-full border-2 border-white" />
-              <span className="font-bold text-white shadow-sm">@creative_vibe</span>
+              <span className="font-bold text-white shadow-sm">@creative_pictura</span>
               <button className="border border-white text-white px-3 py-1 rounded-full text-xs font-semibold backdrop-blur-sm">Follow</button>
             </div>
-            <p className="text-white text-sm mb-2 drop-shadow-md">Lost in the aesthetic ✨ #vibes #art #design</p>
+            <p className="text-white text-sm mb-2 drop-shadow-md">Lost in the aesthetic ✨ #pictura #art #design</p>
             <div className="flex items-center gap-2 bg-white/20 w-fit px-3 py-1 rounded-full backdrop-blur-md">
               <span className="text-white text-xs">🎵 Original Audio</span>
             </div>

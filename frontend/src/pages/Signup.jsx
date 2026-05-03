@@ -52,7 +52,7 @@ const Signup = () => {
             className="text-4xl font-bold italic mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500"
             style={{ fontFamily: "'Grand Hotel', cursive" }}
           >
-            Vibe
+            Pictura
           </h1>
           <p className="text-center text-ig-text-secondary font-semibold mb-6">
             Sign in to see photos and videos from your friends.

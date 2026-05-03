@@ -49,7 +49,7 @@ const Navbar = () => {
             className="text-4xl font-bold italic text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500"
             style={{ fontFamily: "'Grand Hotel', cursive" }}
           >
-            Vibe
+            Pictura
           </h1>
         </div>
 
@@ -89,7 +89,7 @@ const Navbar = () => {
             className="text-2xl font-bold italic text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500"
             style={{ fontFamily: "'Grand Hotel', cursive" }}
           >
-            Vibe
+            Pictura
           </h1>
           <div className="flex gap-4 items-center">
             <NavLink
