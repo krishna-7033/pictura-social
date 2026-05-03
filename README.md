@@ -1,4 +1,4 @@
-# Instagram Clone
+# pictura-social
 
 A minimal Instagram-like web application for learning and demonstration. This repo contains a Node/Express backend and a Vite + React frontend, containerized with Docker and set up for Cloud Run deployment.
 
