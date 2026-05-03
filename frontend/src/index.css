@@ -1,0 +1,49 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: 'Inter', 'Roboto', sans-serif;
+  
+  /* Vibe-like colors */
+  --color-ig-primary: #8b5cf6;
+  --color-ig-primary-hover: #7c3aed;
+  --color-ig-bg: #f3f4f6;
+  --color-ig-border: #e5e7eb;
+  --color-ig-text: #111827;
+  --color-ig-text-secondary: #6b7280;
+  --color-ig-error: #ef4444;
+}
+
+body {
+  background: linear-gradient(135deg, #f3e8ff 0%, #e0e7ff 100%);
+  background-attachment: fixed;
+  color: var(--color-ig-text);
+  font-family: var(--font-sans);
+}
+
+/* Custom Utilities */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.heart-animation {
+  animation: pop 0.3s ease-in-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Hide scrollbar but keep functionality */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
