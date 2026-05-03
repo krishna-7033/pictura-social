@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import GradientBlinds from "../components/GradientBlinds";
 
 const Login = () => {
-  const [email, setEmail] = useState("krishnajha7033@gmail.com");
-  const [password, setPassword] = useState("krishna@123");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const { login } = useAuth();
   const navigate = useNavigate();
