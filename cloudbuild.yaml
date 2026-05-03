@@ -83,7 +83,7 @@ steps:
       [
         "run",
         "deploy",
-        "instagram-frontend",
+        "pictura",
         "--image",
         "us-central1-docker.pkg.dev/$PROJECT_ID/instagram/frontend:$BUILD_ID",
         "--region",
