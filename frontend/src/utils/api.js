@@ -38,7 +38,7 @@ export const postsApi = {
     // Get all posts
     getAll: async () => {
         try {
-            const response = await apiClient.get('/api/posts');
+            const response = await apiClient.get('/posts');
             return response.data;
         } catch (error) {
             console.error('Failed to fetch posts:', error);
@@ -49,7 +49,7 @@ export const postsApi = {
     // Create a new post
     create: async (imageUrl, caption) => {
         try {
-            const response = await apiClient.post('/api/posts/create-post', {
+            const response = await apiClient.post('/posts/create-post', {
                 imageUrl,
                 caption,
             });
@@ -63,7 +63,7 @@ export const postsApi = {
     // Like a post
     like: async (postId) => {
         try {
-            const response = await apiClient.post(`/api/posts/like/${postId}`);
+            const response = await apiClient.post(`/posts/like/${postId}`);
             return response.data;
         } catch (error) {
             console.error('Failed to like post:', error);
@@ -74,7 +74,7 @@ export const postsApi = {
     // Comment on a post
     comment: async (postId, text) => {
         try {
-            const response = await apiClient.post(`/api/posts/comment/${postId}`, {
+            const response = await apiClient.post(`/posts/comment/${postId}`, {
                 text,
             });
             return response.data;
@@ -86,7 +86,7 @@ export const postsApi = {
     // Update a post (edit caption)
     update: async (postId, data) => {
         try {
-            const response = await apiClient.put(`/api/posts/${postId}`, data);
+            const response = await apiClient.put(`/posts/${postId}`, data);
             return response.data;
         } catch (error) {
             console.error('Failed to update post:', error);
@@ -97,7 +97,7 @@ export const postsApi = {
     // Delete a post
     delete: async (postId) => {
         try {
-            const response = await apiClient.delete(`/api/posts/${postId}`);
+            const response = await apiClient.delete(`/posts/${postId}`);
             return response.data;
         } catch (error) {
             console.error('Failed to delete post:', error);
@@ -113,7 +113,7 @@ export const usersApi = {
     // Get user profile by username
     getProfile: async (username) => {
         try {
-            const response = await apiClient.get(`/api/users/profile/${username}`);
+            const response = await apiClient.get(`/users/profile/${username}`);
             // Backend returns {user, posts}, merge them for easier access
             return {
                 ...response.data.user,
@@ -128,7 +128,7 @@ export const usersApi = {
     // Follow a user
     follow: async (userId) => {
         try {
-            const response = await apiClient.post(`/api/users/follow/${userId}`);
+            const response = await apiClient.post(`/users/follow/${userId}`);
             return response.data;
         } catch (error) {
             console.error('Failed to follow user:', error);
@@ -140,7 +140,7 @@ export const usersApi = {
 export const notificationsApi = {
     getAll: async () => {
         try {
-            const res = await apiClient.get('/api/notifications');
+            const res = await apiClient.get('/notifications');
             return res.data;
         } catch (err) {
             console.error('Failed to fetch notifications', err);
@@ -150,7 +150,7 @@ export const notificationsApi = {
 
     markRead: async (id) => {
         try {
-            const res = await apiClient.post(`/api/notifications/${id}/read`);
+            const res = await apiClient.post(`/notifications/${id}/read`);
             return res.data;
         } catch (err) {
             console.error('Failed to mark notification read', err);

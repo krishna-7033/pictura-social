@@ -85,7 +85,7 @@ export const AuthProvider = ({ children }) => {
   const login = async (email, password) => {
     try {
       const response = await authApi.post(
-        "/api/auth/login",
+        "/auth/login",
         {
           email,
           password,
@@ -114,7 +114,7 @@ export const AuthProvider = ({ children }) => {
   const signup = async (userData) => {
     try {
       const response = await authApi.post(
-        "/api/auth/signup",
+        "/auth/signup",
         {
           email: userData.email,
           username: userData.username,
