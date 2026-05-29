@@ -1,8 +1,8 @@
 import axios from 'axios';
+import { DEFAULT_TENANT_SLUG, resolveApiBaseUrl } from './apiConfig';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
-const DEFAULT_TENANT_SLUG = import.meta.env.VITE_DEFAULT_TENANT_SLUG || 'demo';
 const AUTH_STORAGE_KEY = 'ig_auth_state';
+const API_BASE_URL = resolveApiBaseUrl();
 
 const apiClient = axios.create({
     baseURL: API_BASE_URL,

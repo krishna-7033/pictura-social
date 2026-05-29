@@ -6,13 +6,12 @@ import React, {
   useContext,
 } from "react";
 import axios from "axios";
+import { DEFAULT_TENANT_SLUG, resolveApiBaseUrl } from "../utils/apiConfig";
 
 const AuthContext = createContext();
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
-const DEFAULT_TENANT_SLUG = import.meta.env.VITE_DEFAULT_TENANT_SLUG || "demo";
 const AUTH_STORAGE_KEY = "ig_auth_state";
+const API_BASE_URL = resolveApiBaseUrl();
 
 const authApi = axios.create({
   baseURL: API_BASE_URL,
@@ -37,6 +36,21 @@ const clearAuthState = () => {
   localStorage.removeItem(AUTH_STORAGE_KEY);
   localStorage.removeItem("ig_current_user");
   delete authApi.defaults.headers.common.Authorization;
+};
+
+const getAuthErrorMessage = (error, fallbackMessage) => {
+  const backendMessage = error.response?.data?.message;
+  if (backendMessage) {
+    return backendMessage;
+  }
+
+  if (error.code === "ERR_NETWORK") {
+    return API_BASE_URL
+      ? `Cannot reach the backend at ${API_BASE_URL}. Check the Render URL and CORS settings.`
+      : "Cannot reach the backend from this deployment. Set VITE_API_BASE_URL or add a Vercel rewrite to /api.";
+  }
+
+  return fallbackMessage;
 };
 
 export const useAuth = () => useContext(AuthContext);
@@ -85,7 +99,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.message || "Login failed",
+        message: getAuthErrorMessage(error, "Login failed"),
       };
     }
   };
@@ -114,7 +128,7 @@ export const AuthProvider = ({ children }) => {
     } catch (error) {
       return {
         success: false,
-        message: error.response?.data?.message || "Signup failed",
+        message: getAuthErrorMessage(error, "Signup failed"),
       };
     }
   };
