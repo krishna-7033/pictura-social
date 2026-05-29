@@ -39,18 +39,24 @@ const clearAuthState = () => {
 };
 
 const getAuthErrorMessage = (error, fallbackMessage) => {
+  // Prioritize backend-provided message
   const backendMessage = error.response?.data?.message;
-  if (backendMessage) {
-    return backendMessage;
-  }
+  if (backendMessage) return backendMessage;
 
-  if (error.code === "ERR_NETWORK") {
+  // HTTP status available
+  const status = error.response?.status;
+  const statusText = error.response?.statusText;
+  if (status) return `Request failed: ${status} ${statusText || ""}`.trim();
+
+  // Network / CORS errors
+  if (error.code === "ERR_NETWORK" || /Network Error/i.test(error.message)) {
     return API_BASE_URL
-      ? `Cannot reach the backend at ${API_BASE_URL}. Check the Render URL and CORS settings.`
+      ? `Cannot reach the backend at ${API_BASE_URL}. Check the Render URL, DNS, and CORS settings.`
       : "Cannot reach the backend from this deployment. Set VITE_API_BASE_URL or add a Vercel rewrite to /api.";
   }
 
-  return fallbackMessage;
+  // Fallback to axios error message or provided fallback
+  return error.message || fallbackMessage;
 };
 
 export const useAuth = () => useContext(AuthContext);
@@ -97,6 +103,7 @@ export const AuthProvider = ({ children }) => {
       setCurrentUser(authState);
       return { success: true };
     } catch (error) {
+      console.error("Auth login error:", error);
       return {
         success: false,
         message: getAuthErrorMessage(error, "Login failed"),
@@ -126,6 +133,7 @@ export const AuthProvider = ({ children }) => {
       setCurrentUser(authState);
       return { success: true };
     } catch (error) {
+      console.error("Auth signup error:", error);
       return {
         success: false,
         message: getAuthErrorMessage(error, "Signup failed"),
